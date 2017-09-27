@@ -46,10 +46,6 @@ references:
       
 jobs:
 
-test:
-  post:
-    - mkdir -p $CIRCLE_TEST_REPORTS/junit/
-    - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
 
   checkout_code:
     <<: *container_config
@@ -122,6 +118,12 @@ test:
           paths:
             - node_modules
             - bower_components
+
+            test:
+              post:
+                - mkdir -p $CIRCLE_TEST_REPORTS/junit/
+                - find . -type f -regex ".*/build/test-results/.*xml" -exec cp {} $CIRCLE_TEST_REPORTS/junit/ \;
+
           
   clojure_test:
     <<: *container_config
