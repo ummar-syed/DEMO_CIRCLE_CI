@@ -1,1 +1,1 @@
-include ':app', ':insp_module'
+include ':app'
