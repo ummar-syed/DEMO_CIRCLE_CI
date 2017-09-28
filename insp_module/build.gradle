@@ -29,7 +29,9 @@ android {
         exclude 'lib/mips/libRSSupport.so'
         exclude 'lib/mips/librsjni.so'
     }
-
+    lintOptions {
+        abortOnError false
+    }
 
 }
 
