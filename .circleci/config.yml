@@ -20,10 +20,21 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew lint test
+      - run:
+          name: Creating Dummy Artifacts
+          command: |
+                echo "my artifact file" > /tmp/artifact-1;
+                mkdir /tmp/artifacts;
+                echo "my artifact files in a dir" > /tmp/artifacts/artifact-2;
+
       - store_artifacts:
           path: app/build/reports
           destination: reports
       - store_test_results:
           path: app/build/test-results
+     test:
+       override:
+          - ./gradlew assembleRelease
+          - cp -r project-name/build/outputs $CIRCLE_ARTIFACTS
 
 
