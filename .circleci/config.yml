@@ -23,5 +23,5 @@ jobs:
       - store_test_results:
           path: app/build/test-results
       - run:
-        name: Test
-        command: echo "sample"
+          name: Test
+          command: echo "sample"
