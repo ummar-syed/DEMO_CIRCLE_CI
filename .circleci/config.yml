@@ -23,7 +23,7 @@ jobs:
                 echo "my artifact file";
                 echo "my artifact files in a dir";
                 dir;
-                cd "app/build/outputs/apk";
+                cd "app";
                 ls;
 
       - store_artifacts:
