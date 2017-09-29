@@ -21,7 +21,6 @@ jobs:
           name: Creating Dummy Artifacts
           command: |
                 echo "my artifact file";
-                mkdir /code/artifacts;
                 echo "my artifact files in a dir";
                 dir;
 
