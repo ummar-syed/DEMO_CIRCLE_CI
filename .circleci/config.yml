@@ -22,7 +22,7 @@ jobs:
           command: |
                 echo "my artifact file";
                 echo "my artifact files in a dir";
-                cd "app/build";
+                cd "app/build/intermediates";
                 ls;
 
       - store_artifacts:
