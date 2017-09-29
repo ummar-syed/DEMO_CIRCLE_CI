@@ -17,16 +17,8 @@ jobs:
           paths:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-                echo "my artifact file";
-                echo "my artifact files in a dir";
-                cd "app/build/intermediates/incremental/packageRelease";
-                ls;
-                find ~;
-
-      - store_artifacts:
-          path: app/build/reports
-          destination: reports
+      - test:
+        override:
+         - ./gradlew assembleRelease
+         - cp -r code/build/outputs $CIRCLE_ARTIFACTS
 
