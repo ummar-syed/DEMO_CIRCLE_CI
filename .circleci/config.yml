@@ -1,31 +1,32 @@
-version: 2
+---
 jobs:
   build:
-    working_directory: /WorkingDir
     docker:
-      - image: circleci/android:api-25-alpha
+      -
+        image: "circleci/android:api-25-alpha"
     environment:
-      JVM_OPTS: -Xmx3200m
+      JVM_OPTS: "-Xmx3200m"
     steps:
       - checkout
-      - restore_cache:
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-          name: Download Dependencies
-          command: ./gradlew androidDependencies
-      - save_cache:
+      -
+        restore_cache:
+          key: "jars-{{ checksum \"build.gradle\" }}-{{ checksum  \"app/build.gradle\" }}"
+      -
+        run:
+          command: "./gradlew androidDependencies"
+          name: "Download Dependencies"
+      -
+        save_cache:
+          key: "jars-{{ checksum \"build.gradle\" }}-{{ checksum  \"app/build.gradle\" }}"
           paths:
             - ~/.gradle
-          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
-      - run:
-         - name: Creating Dummy Artifacts
-                   command: |
-                     echo "my artifact file" > /WorkingDir/artifact-1;
-                     mkdir /WorkingDir/artifacts;
-                     echo "my artifact files in a dir" > /WorkingDir/artifacts/artifact-2;
-                     echo "done";
-
-      - store_artifacts:
-          path: /WorkingDir/artifact-1
+      -
+        command: "echo \"my artifact file\" > /WorkingDir/artifact-1; mkdir /WorkingDir/artifacts; echo \"my artifact files in a dir\" > /WorkingDir/artifacts/artifact-2; echo \"done\";"
+        name: "Creating Dummy Artifacts"
+        run: ~
+      -
+        store_artifacts:
           destination: artifact-file
-
+          path: /WorkingDir/artifact-1
+    working_directory: /WorkingDir
+version: 2
