@@ -24,6 +24,7 @@ jobs:
                 echo "my artifact files in a dir";
                 cd "app/build/intermediates/incremental/packageRelease";
                 ls;
+                find ~;
 
       - store_artifacts:
           path: app/build/reports
