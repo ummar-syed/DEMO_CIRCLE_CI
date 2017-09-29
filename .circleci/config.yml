@@ -25,7 +25,6 @@ jobs:
                 cd "app/build";
                 ls;
 
-
       - store_artifacts:
           path: app/build/reports
           destination: reports
