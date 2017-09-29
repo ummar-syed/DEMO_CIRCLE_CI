@@ -22,9 +22,9 @@ jobs:
           command: |
                 echo "my artifact file";
                 echo "my artifact files in a dir";
-                sudo apt-get install tree;
-                cd "app/build/intermediates";
-                tree app/build/intermediates;
+
+                cd "app/build";
+                ls;
 
 
       - store_artifacts:
