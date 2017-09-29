@@ -18,9 +18,6 @@ jobs:
             - ~/.gradle
           key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Run Tests
-          command: ./gradlew lint test
-      - run:
           name: Creating Dummy Artifacts
           command: |
                 echo "my artifact file";
@@ -31,11 +28,4 @@ jobs:
       - store_artifacts:
           path: app/build/reports
           destination: reports
-      - store_test_results:
-          path: app/build/test-results
-     test:
-       override:
-          - ./gradlew assembleRelease
-          - cp -r project-name/build/outputs $CIRCLE_ARTIFACTS
-
 
