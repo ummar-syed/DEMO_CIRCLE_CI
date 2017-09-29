@@ -23,7 +23,7 @@ jobs:
                      echo "my artifact file" > /WorkingDir/artifact-1;
                      mkdir /WorkingDir/artifacts;
                      echo "my artifact files in a dir" > /WorkingDir/artifacts/artifact-2;
-                     echo "done"
+                     echo "done";
 
       - store_artifacts:
           path: /WorkingDir/artifact-1
