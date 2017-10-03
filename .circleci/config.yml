@@ -6,53 +6,23 @@ jobs:
       - image: circleci/android:api-25-alpha
     environment:
       JVM_OPTS: -Xmx3200m
-
-    environment:
-      # Customize the JVM maximum heap limit
-      MAVEN_OPTS: -Xmx3200m
-      ANDROID_HOME: /usr/local/android-sdk-linux
-
     steps:
       - checkout
-
-      # Download and cache dependencies
-
       - restore_cache:
-          keys:
-          - v1-dependencies-{{ checksum "pom.xml" }}
-          # fallback to using the latest cache if no exact match is found
-          - v1-dependencies-
-
-      - run: mvn dependency:go-offline
-
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Install node
-          command: |
-                 curl -sL https://deb.nodesource.com/setup_8.x | sudo -E bash -
-                 sudo apt-get install -y nodejs
-                 sudo apt-get install -y build-essential
-                 sudo apt-get install build-essential curl git m4 python-setuptools ruby texinfo libbz2-dev libcurl4-openssl-dev libexpat-dev libncurses-dev zlib1g-dev
-      - run:
-          name: Install appium server
-          command: |
-            sudo npm update -g
-            sudo npm install appium
-            sudo npm install wd
-
+          name: Download Dependencies
+          command: ./gradlew androidDependencies
       - save_cache:
           paths:
-            - ~/.m2
-          key: v1-dependencies-{{ checksum "pom.xml" }}
-
+            - ~/.gradle
+          key: jars-{{ checksum "build.gradle" }}-{{ checksum  "app/build.gradle" }}
       - run:
-          name: Start appium server
-          command: appium &
-
-      # run tests!
-      - run: mvn test
-
+          name: Run Tests
+          command: ./gradlew lint test
       - store_artifacts:
-          path: target/surefire-reports
-          destination: tr1
+          path: app/build/reports
+          destination: reports
       - store_test_results:
-          path: target/surefire-reports
+          path: app/build/test-results
+
