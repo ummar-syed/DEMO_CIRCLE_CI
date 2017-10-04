@@ -20,18 +20,10 @@ jobs:
       - run:
           name: Run Tests
           command: ./gradlew lint test
-
-      - run:
-          name: Creating Dummy Artifacts
-          command: |
-            echo "my artifact file" > /code/artifact-1;
-            mkdir /code/artifacts;
-            echo "my artifact files in a dir" > /code/artifacts/artifact-2;
-
       - store_artifacts:
-          path: /code/artifact-1
-          destination: artifact-file
+          path: app/build/reports
+          destination: reports
 
-      - store_artifacts:
-          path: /code/artifacts
+      - store_test_results:
+          path: app/build/test-results
 
