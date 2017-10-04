@@ -1,0 +1,22 @@
+general:
+    artifacts:
+        - app/build/outputs/apk/
+
+machine:
+    environment:
+        ANDROID_HOME: /usr/local/android-sdk-linux
+
+dependencies:
+  pre:
+    - echo y | android update sdk --no-ui --all --filter "tools,platform-tools,android-23"
+    - echo y | android update sdk --no-ui --all --filter "build-tools-23.0.2"
+
+test:
+    override:
+       - ./gradlew build -x test -PpreDexEnable=false -Pcom.android.build.threadPoolSize=1 -Dorg.gradle.parallel=false -Dorg.gradle.jvmargs="-Xms512m -Xmx512m"
+
+deployment:
+    alpha:
+        branch: develop
+        commands:
+           - ./gradlew publishApkProductionRelease
