@@ -1,0 +1,61 @@
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    >
+
+   <RelativeLayout
+       android:layout_width="match_parent"
+       android:layout_height="wrap_content"
+       android:layout_centerInParent="true"
+       android:layout_marginLeft="20dp"
+       android:layout_marginRight="20dp">
+
+       <TextView
+           android:id="@+id/loginTitle_TextView"
+           android:layout_width="wrap_content"
+           android:layout_height="wrap_content"
+           android:text="Login"
+           android:layout_centerHorizontal="true"
+           android:textSize="20sp"
+           android:textStyle="bold"/>
+
+       <EditText
+           android:layout_below="@+id/loginTitle_TextView"
+           android:id="@+id/userId_EditText"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="UserId"
+           android:lines="1"
+           android:singleLine="true"
+           android:maxLines="1"
+           android:layout_marginTop="40dp"/>
+
+       <EditText
+           android:id="@+id/password_EditText"
+           android:layout_below="@+id/userId_EditText"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:hint="Password"
+           android:lines="1"
+           android:singleLine="true"
+           android:maxLines="1"
+           android:inputType="textPassword"
+           android:layout_marginTop="10dp"/>
+
+       <Button
+           android:id="@+id/submit_Button"
+           android:layout_below="@+id/password_EditText"
+           android:layout_width="match_parent"
+           android:layout_height="wrap_content"
+           android:layout_marginTop="30dp"
+           android:text="Submit"
+           android:background="@android:color/holo_green_dark"
+           android:textColor="@android:color/white"
+           android:textAllCaps="false"
+           android:textStyle="bold"/>
+
+   </RelativeLayout>
+
+
+</RelativeLayout>
