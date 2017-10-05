@@ -1,20 +1,34 @@
+#
+# Build configuration for Circle CI
+#
+# See this thread for speeding up and caching directories:
+# https://discuss.circleci.com/t/installing-android-build-tools-23-0-2/924
+#
+
 general:
     artifacts:
-        - /home/ubuntu/Demo_Circle_CI/app/build/outputs/apk/
+        - /home/ubuntu/AndroidCI/app/build/outputs/apk/
 
 machine:
     environment:
         ANDROID_HOME: /usr/local/android-sdk-linux
+        ADB_INSTALL_TIMEOUT: 60
+        GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx3072M -XX:+HeapDumpOnOutOfMemoryError"'
     java:
         version: oraclejdk8
 
 dependencies:
-    pre:
-        - echo y | android update sdk --no-ui --all --filter "tools,android-26,build-tools-26.0.1"
-    cache_directories:
-        - /usr/local/android-sdk-linux/tools
-        - /usr/local/android-sdk-linux/build-tools/26.0.1
+      pre:
+     - if [ ! -e /usr/local/android-sdk-linux/build-tools/26.0.1 ]; then echo y | android update sdk --all --no-ui --filter "build-tools-26.0.1"; fi;
+     - if [ ! -e /usr/local/android-sdk-linux/platforms/android-26 ]; then echo y | android update sdk --all --no-ui --filter "android-26"; fi;
+     - if ! $(grep -q "Revision=43.0.0" /usr/local/android-sdk-linux/extras/android/m2repository/source.properties); then echo y | android update sdk --all --no-ui --filter "extra-android-m2repository"; fi;
+   cache_directories:
+     - /usr/local/android-sdk-linux/build-tools/26.0.1
+     - /usr/local/android-sdk-linux/platforms/android-26
+     - /usr/local/android-sdk-linux/extras/android/m2repository
 
+# Comment the test stuff out (or remove it) if you don't need it.
 test:
    post:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+     
