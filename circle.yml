@@ -30,5 +30,5 @@ dependencies:
 # Comment the test stuff out (or remove it) if you don't need it.
 test:
   override:
-      - cd app/build/outputs
+      - cd /home/ubuntu/AndroidCI/app/build/
       - ls
