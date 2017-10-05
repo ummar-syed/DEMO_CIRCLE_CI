@@ -13,7 +13,6 @@ machine:
     environment:
         ANDROID_HOME: /usr/local/android-sdk-linux
         ADB_INSTALL_TIMEOUT: 60
-        GRADLE_OPTS: '-Dorg.gradle.jvmargs="-Xmx3072M -XX:+HeapDumpOnOutOfMemoryError"'
     java:
         version: oraclejdk8
 
@@ -27,7 +26,6 @@ dependencies:
      - /usr/local/android-sdk-linux/platforms/android-26
      - /usr/local/android-sdk-linux/extras/android/m2repository
 
-# Comment the test stuff out (or remove it) if you don't need it.
 test:
   override:
       - cd /home/ubuntu/AndroidCI/app/build/
