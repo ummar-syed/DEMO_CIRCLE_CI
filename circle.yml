@@ -29,5 +29,9 @@ dependencies:
 
 # Comment the test stuff out (or remove it) if you don't need it.
 test:
+  override:
+#    - ./gradlew clean assemble
+    # This will run the tests:
+   - ./gradlew assemble connectedDebugAndroidTest -PdisablePreDex --console=plain --info
   post:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
