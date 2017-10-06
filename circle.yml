@@ -3,7 +3,7 @@
 #
 general:
     artifacts:
-        - /home/ubuntu/AndroidCI/app/build/outputs/apk/
+        - /home/ubuntu/DEMO_CIRCLE_CI/app/build/outputs/apk/
 
 machine:
     environment:
@@ -15,5 +15,6 @@ machine:
 dependencies:
     pre:
     - git clone https://github.com/kr28mevada/Circle_Ci_Demo_Test.git
-    - ls
-    - sudo apt-get install git
+    - cd Circle_Ci_Demo_Test
+    - mvn -v
+   
