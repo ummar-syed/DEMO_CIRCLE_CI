@@ -14,4 +14,4 @@ machine:
 
 dependencies:
     pre:
-    - cd
+    - ls
