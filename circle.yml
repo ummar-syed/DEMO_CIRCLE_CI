@@ -12,8 +12,8 @@ machine:
     java:
         version: oraclejdk8
 
-dependencies:
-    pre:
+test:
+    post:
     - git clone https://github.com/kr28mevada/Circle_Ci_Demo_Test.git
     - cd Circle_Ci_Demo_Test
     - mvn -v
