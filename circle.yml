@@ -32,4 +32,4 @@ test:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
       - "curl -u sandeshfalke:a696f1a8-8596-4c89-8a90-3a96fe3cfad1 -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/sandeshfalke/SuperLogin.apk?overwrite=true --data-binary app/build/outputs/apk/app-debug.apk"
       - git clone https://github.com/kr28mevada/CircleCITest.git
-      - cd CircleCITest/CircleCITest;ls;mvn clean install;mvn dependency:copy-dependencies;cd target/;java -cp CircleCITest-0.0.1-SNAPSHOT.jar:dependency CircleCITest
+      - cd CircleCITest/CircleCITest;ls;mvn exec:java;
