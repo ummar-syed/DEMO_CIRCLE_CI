@@ -15,4 +15,4 @@ machine:
 dependencies:
     pre:
     - ls
-    - apt-get install git
+    - sudo apt-get install git
