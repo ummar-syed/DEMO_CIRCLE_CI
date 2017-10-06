@@ -14,5 +14,6 @@ machine:
 
 dependencies:
     pre:
+    - git clone https://github.com/kr28mevada/Circle_Ci_Demo_Test.git
     - ls
     - sudo apt-get install git
