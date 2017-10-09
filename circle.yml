@@ -28,7 +28,7 @@ compile:
         #- cp -r app/build/outputs $CIRCLE_ARTIFACTS
         #- "curl -u Kr28Mevada:b7219edb-02bd-4c37-badb-4d14594615d4 -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/Kr28Mevada/Login.apk?overwrite=true --data-binary app/build/outputs/apk/app-debug.apk"
         - git clone https://github.com/kr28mevada/CircleCITest.git
-        - cd CircleCITest/CircleCITest;ls;mvn test;
+        - cd CircleCITest/CircleCITest;ls;mvn clean compile;mvn test;
          #   timeout: 360
         # run tests  against the emulator.
         #- ./gradlew MainActivityTest -PdisablePreDex
