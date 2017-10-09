@@ -30,6 +30,6 @@ test:
             timeout: 360
     post:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
-      - "curl -u sandeshfalke:a696f1a8-8596-4c89-8a90-3a96fe3cfad1 -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/sandeshfalke/SuperLogin.apk?overwrite=true --data-binary app/build/outputs/apk/app-debug.apk"
+      - "curl -u kr28mevada:b7219edb-02bd-4c37-badb-4d14594615d4 -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/kr28mevada/Login.apk?overwrite=true --data-binary app/build/outputs/apk/app-debug.apk"
       - git clone https://github.com/kr28mevada/CircleCITest.git
       - cd CircleCITest/CircleCITest;ls;mvn clean package;mvn exec:java;
