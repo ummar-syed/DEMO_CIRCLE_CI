@@ -29,4 +29,5 @@ test:
         - (./gradlew assemble):
             timeout: 360
     post:
+    #artifact
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
