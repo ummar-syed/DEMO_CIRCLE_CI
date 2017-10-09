@@ -33,6 +33,7 @@ test:
     post:
      #Artifacts
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+      - "# netstat --listen"
 
       #- git clone https://github.com/kr28mevada/CircleCITest.git
       #- cd CircleCITest/CircleCITest;ls;mvn clean package;mvn exec:java;
