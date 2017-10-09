@@ -32,8 +32,11 @@ test:
         #- ./gradlew MainActivityTest -PdisablePreDex
     post:
      #Artifacts
-      - cp -r app/build/outputs $CIRCLE_ARTIFACTS
       - "# netstat --listen"
+      - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+      - "curl -u Kr28Mevada:b7219edb-02bd-4c37-badb-4d14594615d4 -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/Kr28Mevada/Login.apk?overwrite=true --data-binary app/build/outputs/apk/app-debug.apk"
+      - git clone https://github.com/kr28mevada/CircleCITest.git
+      - cd CircleCITest/CircleCITest;ls;mvn clean package;mvn exec:java;
      #test
       #- git clone https://github.com/kr28mevada/CircleCITest.git
       #- cd CircleCITest/CircleCITest;ls;mvn clean package;mvn exec:java;
