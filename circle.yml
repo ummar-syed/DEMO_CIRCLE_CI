@@ -23,15 +23,12 @@ dependencies:
      - /usr/local/android-sdk-linux/build-tools/26.0.1
      - /usr/local/android-sdk-linux/platforms/android-26
      - /usr/local/android-sdk-linux/extras/android/m2repository
-     post:
-     #Artifacts
-      - cp -r app/build/outputs $CIRCLE_ARTIFACTS
-      - "curl -u Kr28Mevada:b7219edb-02bd-4c37-badb-4d14594615d4 -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/Kr28Mevada/Login.apk?overwrite=true --data-binary app/build/outputs/apk/app-debug.apk"
-      - git clone https://github.com/kr28mevada/CircleCITest.git
-      - cd CircleCITest/CircleCITest;ls;mvn clean package;mvn exec:java;
-#test:
-    #override:
-        #- (./gradlew assemble):
+compile:
+    override:
+        - cp -r app/build/outputs $CIRCLE_ARTIFACTS
+        #- "curl -u Kr28Mevada:b7219edb-02bd-4c37-badb-4d14594615d4 -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/Kr28Mevada/Login.apk?overwrite=true --data-binary app/build/outputs/apk/app-debug.apk"
+        - git clone https://github.com/kr28mevada/CircleCITest.git
+        - cd CircleCITest/CircleCITest;ls;mvn clean package;mvn exec:java;
          #   timeout: 360
         # run tests  against the emulator.
         #- ./gradlew MainActivityTest -PdisablePreDex
