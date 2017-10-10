@@ -18,7 +18,7 @@ import static android.support.test.espresso.Espresso.onView;
 import static android.support.test.espresso.matcher.ViewMatchers.withId;
 
 /**
- * Created by sandip.lawate on 10/9/2017.
+ * Created by dev1 on 10/9/2017.
  */
 public class LoginFragmentTest extends ActivityInstrumentationTestCase2<MainActivity> {
     private LoginFragment fragment;
