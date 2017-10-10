@@ -50,7 +50,7 @@ public class LoginFragmentTest extends ActivityInstrumentationTestCase2<MainActi
 
         Fragment frag = startFragment(fragment);
         Button btnSubmit = (Button) frag.getView().findViewById(R.id.submit_Button);
-        assertTrue("Test", (btnSubmit.getText().equals("Submit_new")));
+        assertTrue("Test", (btnSubmit.getText().equals("Submit")));
 
     }
 
