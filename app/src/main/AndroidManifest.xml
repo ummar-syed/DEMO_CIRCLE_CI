@@ -2,6 +2,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.circle_ci">
 
+    <uses-permission android:name="android.permission.INTERNET"></uses-permission>
     <application
 
         android:allowBackup="true"
@@ -29,7 +30,10 @@
         <meta-data android:name="net.hockeyapp.android.appIdentifier"
             android:value="68ead9d17c3942e781e8f3583ccb3f83" />
 
-
+        <meta-data
+            android:name="io.fabric.ApiKey"
+            android:value="db2ef9b91dfa0462037a2530a3f387149fec902f"
+            />
     </application>
 
 </manifest>
