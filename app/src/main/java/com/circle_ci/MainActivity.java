@@ -16,6 +16,6 @@ public class MainActivity extends Activity {
         getFragmentManager().beginTransaction().add(R.id.frameLayout, new LoginFragment())
                 .addToBackStack(LoginFragment.class.getSimpleName())
                 .commit();
-
+        //test
     }
 }
