@@ -34,7 +34,8 @@ test:
         #- ./gradlew build -PdisablePreDex
     post:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
-      - curl -u Kr28Mevada:b7219edb-02bd-4c37-badb-4d14594615d4 -X POST -H "Content-Type: application/octet-stream" https://saucelabs.com/rest/v1/storage/Kr28Mevada/Newupload.apk?overwrite=true --data-binary @app/build/outputs/apk/app-debug.apk
+      #- curl -u Kr28Mevada:b7219edb-02bd-4c37-badb-4d14594615d4 -X POST -H "Content-Type: application/octet-stream" https://saucelabs.com/rest/v1/storage/Kr28Mevada/Newupload.apk?overwrite=true --data-binary @app/build/outputs/apk/app-debug.apk
+      - chmod +x DeployArtifact.sh;DeployArtifact.sh
       #- npm install -g sauce-uploader
       #- sauce-uploader Kr28Mevada b7219edb-02bd-4c37-badb-4d14594615d4 app/build/outputs/apk/app-debug.apk
       #- "curl -u Kr28Mevada:b7219edb-02bd-4c37-badb-4d14594615d4 -X POST -H 'Content-Type: application/octet-stream' https://saucelabs.com/rest/v1/storage/Kr28Mevada/SuperLogin.apk?overwrite=true --data-binary app/build/outputs/apk/app-debug.apk"
