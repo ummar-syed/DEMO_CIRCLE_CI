@@ -31,9 +31,9 @@ test:
         - ./gradlew build -PdisablePreDex
     post:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
-      #- chmod +x DeployArtifact.sh;./DeployArtifact.sh
-      #- git clone https://github.com/kr28mevada/CircleCITest.git
-      #- cd CircleCITest/CircleCITest;ls;mvn clean compile;mvn test;
+      - chmod +x DeployArtifact.sh;./DeployArtifact.sh
+      - git clone https://github.com/kr28mevada/CircleCITest.git
+      - cd CircleCITest/CircleCITest;ls;mvn clean compile;mvn test;
 
 deployment:
   develop:
