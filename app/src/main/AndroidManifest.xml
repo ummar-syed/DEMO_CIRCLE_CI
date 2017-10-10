@@ -26,7 +26,9 @@
         </activity>
 
         //your activity declarations and other stuff
-        <meta-data android:name="net.hockeyapp.android.appIdentifier" android:value="7aa5e0ca4df54126ad47dd44c6cf06d5" />
+        <meta-data android:name="net.hockeyapp.android.appIdentifier"
+            android:value="68ead9d17c3942e781e8f3583ccb3f83" />
+
 
     </application>
 

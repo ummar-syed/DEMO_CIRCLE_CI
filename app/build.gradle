@@ -11,7 +11,10 @@ android {
         versionName "1.0"
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
         vectorDrawables.useSupportLibrary = true
-        manifestPlaceholders = [HOCKEYAPP_APP_ID: "852f7881d746411b844ed3f9ebea537e"]
+        //manifestPlaceholders = [HOCKEYAPP_APP_ID: "852f7881d746411b844ed3f9ebea537e"]
+        manifestPlaceholders = [HOCKEYAPP_APP_ID: "68ead9d17c3942e781e8f3583ccb3f83"]
+
+
 
     }
     buildTypes {
@@ -35,5 +38,9 @@ dependencies {
     compile 'com.android.support:design:26.+'
     compile 'com.android.support:support-vector-drawable:26.+'
     testCompile 'junit:junit:4.12'
-    compile 'net.hockeyapp.android:HockeySDK:5.0.1'
+    compile 'net.hockeyapp.android:HockeySDK:5.0.2'
+}
+
+repositories{
+    jcenter()
 }

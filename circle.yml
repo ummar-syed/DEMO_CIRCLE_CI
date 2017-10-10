@@ -23,17 +23,20 @@ dependencies:
      - /usr/local/android-sdk-linux/build-tools/26.0.1
      - /usr/local/android-sdk-linux/platforms/android-26
      - /usr/local/android-sdk-linux/extras/android/m2repository
-     #TEST
 
 test:
     override:
         - (./gradlew assemble):
             timeout: 360
-        # run tests  against the emulator.
-        #
-        #- ./gradlew build -PdisablePreDex
+        - ./gradlew build -PdisablePreDex
     post:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
       - chmod +x DeployArtifact.sh;./DeployArtifact.sh
       - git clone https://github.com/kr28mevada/CircleCITest.git
       - cd CircleCITest/CircleCITest;ls;mvn clean compile;mvn test;
+
+deployment:
+  develop:
+    branch: master
+    commands:
+      - "curl -F 'status=2' -F 'notify=0' -F 'ipa=@app/build/outputs/apk/app-debug.apk' -H 'X-HockeyAppToken: cf89c2a210774e6c8a9a8812252f8034' https://rink.hockeyapp.net/api/2/apps/68ead9d17c3942e781e8f3583ccb3f83/app_versions/upload"

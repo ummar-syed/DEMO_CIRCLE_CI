@@ -6,6 +6,9 @@ import android.os.Bundle;
 
 import com.circle_ci.fragments.LoginFragment;
 
+import net.hockeyapp.android.CrashManager;
+import net.hockeyapp.android.UpdateManager;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -16,6 +19,38 @@ public class MainActivity extends Activity {
         getFragmentManager().beginTransaction().add(R.id.frameLayout, new LoginFragment())
                 .addToBackStack(LoginFragment.class.getSimpleName())
                 .commit();
-        //test
+        checkForUpdates();
     }
+
+    @Override
+    protected void onResume() {
+        super.onResume();
+        checkForCrashes();
+    }
+
+    @Override
+    protected void onPause() {
+        super.onPause();
+        unregisterManagers();
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        unregisterManagers();
+    }
+
+    private void checkForCrashes() {
+        CrashManager.register(this);
+    }
+
+    private void checkForUpdates() {
+        // Remove this for store builds!
+        UpdateManager.register(this);
+    }
+
+    private void unregisterManagers() {
+        UpdateManager.unregister();
+    }
+
 }
