@@ -30,6 +30,7 @@ test:
         - (./gradlew assemble):
             timeout: 360
         # run tests  against the emulator.
+        #
         - ./gradlew build -PdisablePreDex
     post:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
