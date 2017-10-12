@@ -1,6 +1,5 @@
 #
 # Build configuration for Circle CI
-# Final CircleCi build
 #
 general:
     artifacts:
