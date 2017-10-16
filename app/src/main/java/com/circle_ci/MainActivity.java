@@ -32,6 +32,7 @@ public class MainActivity extends Activity {
                 .addToBackStack(LoginFragment.class.getSimpleName())
                 .commit();
         checkForUpdates();
+        //
     }
 
     @Override
