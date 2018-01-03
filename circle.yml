@@ -32,7 +32,7 @@ test:
     post:
       - cp -r app/build/outputs $CIRCLE_ARTIFACTS
       - chmod +x DeployArtifact.sh;./DeployArtifact.sh
-      - git clone https://github.com/kr28mevada/CircleCITest.git
+      - git clone https://github.com/ummar-syed/CircleCITest.git
       - cd CircleCITest/CircleCITest;ls;mvn clean compile;mvn test;
 
 deployment:
