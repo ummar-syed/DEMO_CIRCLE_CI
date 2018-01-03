@@ -39,4 +39,4 @@ deployment:
   develop:
     branch: master
     commands:
-      - "curl -F 'status=2' -F 'notify=0' -F 'ipa=@app/build/outputs/apk/app-debug.apk' -H 'X-HockeyAppToken: cf89c2a210774e6c8a9a8812252f8034' https://rink.hockeyapp.net/api/2/apps/68ead9d17c3942e781e8f3583ccb3f83/app_versions/upload"
+      - "curl -F 'status=2' -F 'notify=0' -F 'ipa=@app/build/outputs/apk/app-debug.apk' -H 'X-HockeyAppToken: 7fe2e0bee9014070b75a62ebe3ce2b2f' https://rink.hockeyapp.net/api/2/apps/7fe2e0bee9014070b75a62ebe3ce2b2f/app_versions/upload"
